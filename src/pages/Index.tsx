@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Envelope from "@/components/Envelope";
 import InvitationCard from "@/components/InvitationCard";
