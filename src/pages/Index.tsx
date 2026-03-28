@@ -22,7 +22,7 @@ const navItems = [
 const Index = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("invitation");
-  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
