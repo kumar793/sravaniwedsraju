@@ -15,12 +15,6 @@ const events = [
     icon: Utensils,
   },
   {
-    time: "రాత్రి 8:30",
-    title: "సంగీత కార్యక్రమం",
-    desc: "వేడుక & వినోదం",
-    icon: Music,
-  },
-  {
     time: "రాత్రి 9:17",
     title: "శుభ ముహూర్తం",
     desc: "వివాహ వేడుక",

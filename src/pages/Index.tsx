@@ -6,16 +6,14 @@ import FloatingPetals from "@/components/FloatingPetals";
 import CountdownTimer from "@/components/CountdownTimer";
 import VenueMap from "@/components/VenueMap";
 import EventTimeline from "@/components/EventTimeline";
-import RSVPForm from "@/components/RSVPForm";
 import ContactSection from "@/components/ContactSection";
 import weddingMotif from "@/assets/wedding-motif.png";
-import { Heart, MapPin, Clock, Send, Phone, ChevronDown } from "lucide-react";
+import { Heart, MapPin, Clock, Phone, ChevronDown } from "lucide-react";
 
 const navItems = [
   { id: "invitation", label: "ఆహ్వానం", icon: Heart },
   { id: "timeline", label: "కార్యక్రమం", icon: Clock },
   { id: "venue", label: "వేదిక", icon: MapPin },
-  { id: "rsvp", label: "RSVP", icon: Send },
   { id: "contact", label: "సంప్రదించు", icon: Phone },
 ];
 
@@ -180,11 +178,6 @@ const Index = () => {
               {/* Section: Venue */}
               <section ref={(el) => { sectionRefs.current["venue"] = el; }} id="venue">
                 <VenueMap />
-              </section>
-
-              {/* Section: RSVP */}
-              <section ref={(el) => { sectionRefs.current["rsvp"] = el; }} id="rsvp">
-                <RSVPForm />
               </section>
 
               {/* Section: Contact */}
