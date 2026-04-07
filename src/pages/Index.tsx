@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Envelope from "@/components/Envelope";
 import InvitationCard from "@/components/InvitationCard";
@@ -17,6 +17,14 @@ const navItems = [
   { id: "contact", label: "సంప్రదించు", icon: Phone },
 ];
 
+const SectionDivider = ({ symbol = "✦" }: { symbol?: string }) => (
+  <div className="flex items-center gap-4 max-w-xs mx-auto my-2">
+    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+    <span className="text-gold text-sm opacity-60">{symbol}</span>
+    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+  </div>
+);
+
 const Index = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("invitation");
@@ -33,34 +41,39 @@ const Index = () => {
 
       <AnimatePresence mode="wait">
         {!isOpen ? (
-          /* ========== LANDING / ENVELOPE PAGE ========== */
           <motion.div
             key="envelope-landing"
             className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-10"
             exit={{ y: -200, opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.5 }}
           >
+            {/* Radial glow behind motif */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
+
             {/* Om Motif */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="mb-4"
+              initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="mb-5"
             >
-              <img
-                src={weddingMotif}
-                alt="శుభం"
-                width={512}
-                height={512}
-                className="w-24 h-24 sm:w-32 sm:h-32 object-contain drop-shadow-lg"
-              />
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-gold/10 blur-xl scale-150" />
+                <img
+                  src={weddingMotif}
+                  alt="శుభం"
+                  width={512}
+                  height={512}
+                  className="relative w-28 h-28 sm:w-36 sm:h-36 object-contain drop-shadow-[0_4px_20px_rgba(200,160,60,0.3)]"
+                />
+              </div>
             </motion.div>
 
             {/* Blessing text */}
             <motion.p
-              className="text-gold text-[11px] sm:text-base font-telugu font-semibold tracking-[0.15em] sm:tracking-[0.2em] mb-2 whitespace-nowrap"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              className="text-gold text-[11px] sm:text-base font-telugu font-semibold tracking-[0.15em] sm:tracking-[0.2em] mb-3 whitespace-nowrap"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
               శ్రీరస్తు &nbsp;|&nbsp; శుభమస్తు &nbsp;|&nbsp; అవిఘ్నమస్తు
@@ -68,41 +81,41 @@ const Index = () => {
 
             {/* Decorative line */}
             <motion.div
-              className="flex items-center gap-3 w-48 sm:w-64 mb-3"
+              className="flex items-center gap-3 w-56 sm:w-72 mb-4"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <div className="flex-1 h-px bg-gold/50" />
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
               <span className="text-gold text-xs">✦</span>
-              <div className="flex-1 h-px bg-gold/50" />
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
             </motion.div>
 
             {/* Title */}
             <motion.div
-              className="text-center mb-2"
+              className="text-center mb-3"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <p className="text-gold font-cursive text-4xl sm:text-6xl mb-1 drop-shadow-md">
+              <p className="text-gold font-cursive text-4xl sm:text-6xl mb-2 drop-shadow-[0_2px_10px_rgba(200,160,60,0.3)]">
                 Wedding Invitation
               </p>
-              <h1 className="text-maroon font-telugu font-bold text-xl sm:text-3xl">
+              <h1 className="text-maroon font-telugu font-bold text-xl sm:text-3xl drop-shadow-sm">
                 వోలేటి వారి వివాహ ఆహ్వాన పత్రిక
               </h1>
             </motion.div>
 
             {/* Decorative line */}
             <motion.div
-              className="flex items-center gap-3 w-48 sm:w-64 mb-2"
+              className="flex items-center gap-3 w-56 sm:w-72 mb-4"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
             >
-              <div className="flex-1 h-px bg-gold/50" />
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
               <span className="text-gold text-xs">❖</span>
-              <div className="flex-1 h-px bg-gold/50" />
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
             </motion.div>
 
             {/* Bride & Groom names */}
@@ -112,21 +125,33 @@ const Index = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              <div className="flex items-center justify-center gap-3 sm:gap-6">
-                <p className="text-maroon font-bold text-lg sm:text-2xl font-telugu">దేవి శ్రావణి</p>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gold-gradient flex items-center justify-center shimmer shadow-lg">
-                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="hsl(var(--primary))" />
+              <div className="flex items-center justify-center gap-4 sm:gap-6">
+                <div className="text-center">
+                  <p className="text-maroon font-bold text-lg sm:text-2xl font-telugu">దేవి శ్రావణి</p>
+                  <p className="text-gold/60 text-[10px] font-telugu mt-0.5">వధువు</p>
                 </div>
-                <p className="text-maroon font-bold text-lg sm:text-2xl font-telugu">నాగ కామరాజు</p>
+                <motion.div
+                  className="w-11 h-11 sm:w-14 sm:h-14 rounded-full gold-gradient flex items-center justify-center shadow-[0_0_20px_rgba(200,160,60,0.3)]"
+                  animate={{ scale: [1, 1.08, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="hsl(var(--primary))" />
+                </motion.div>
+                <div className="text-center">
+                  <p className="text-maroon font-bold text-lg sm:text-2xl font-telugu">నాగ కామరాజు</p>
+                  <p className="text-gold/60 text-[10px] font-telugu mt-0.5">వరుడు</p>
+                </div>
               </div>
-              <p className="text-muted-foreground text-sm mt-3 font-telugu">8 ఏప్రిల్ 2026, బుధవారం</p>
+              <p className="text-muted-foreground text-sm mt-4 font-telugu">
+                8 ఏప్రిల్ 2026, బుధవారం
+              </p>
             </motion.div>
 
             {/* Countdown on landing */}
             <motion.div
               className="my-6 w-full max-w-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
             >
               <CountdownTimer />
@@ -145,7 +170,6 @@ const Index = () => {
             </motion.div>
           </motion.div>
         ) : (
-          /* ========== FULL WEDDING APP ========== */
           <motion.div
             key="wedding-app"
             initial={{ opacity: 0 }}
@@ -154,15 +178,15 @@ const Index = () => {
             className="relative z-10"
           >
             {/* Sticky Navigation */}
-            <nav className="sticky top-0 z-50 bg-primary/95 backdrop-blur-md border-b border-gold/20 shadow-lg">
-              <div className="flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 max-w-2xl mx-auto overflow-x-auto">
+            <nav className="sticky top-0 z-50 bg-primary/95 backdrop-blur-md border-b border-gold/20 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <div className="flex items-center justify-center gap-1 sm:gap-2 px-2 py-2.5 max-w-2xl mx-auto overflow-x-auto">
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition-all whitespace-nowrap ${
+                    className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs font-semibold transition-all whitespace-nowrap ${
                       activeSection === item.id
-                        ? "bg-gold/20 text-gold"
+                        ? "bg-gold/20 text-gold shadow-inner"
                         : "text-gold/60 hover:text-gold hover:bg-gold/10"
                     }`}
                   >
@@ -174,35 +198,43 @@ const Index = () => {
             </nav>
 
             {/* Back to envelope */}
-            <div className="text-center py-3">
+            <div className="text-center py-4">
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gold text-xs hover:underline font-telugu"
+                className="text-gold/70 text-xs hover:text-gold transition-colors font-telugu inline-flex items-center gap-1"
               >
                 ✉ ఎన్వలప్ కు తిరిగి వెళ్ళు
               </button>
             </div>
 
-            <div className="px-4 pb-20 space-y-12 max-w-2xl mx-auto">
+            <div className="px-4 pb-20 space-y-6 max-w-2xl mx-auto">
               {/* Section: Invitation */}
               <section ref={(el) => { sectionRefs.current["invitation"] = el; }} id="invitation">
                 <InvitationCard />
               </section>
 
+              <SectionDivider symbol="❖" />
+
               {/* Section: Countdown */}
-              <section className="py-6">
+              <section className="py-4">
                 <CountdownTimer />
               </section>
+
+              <SectionDivider symbol="✦" />
 
               {/* Section: Timeline */}
               <section ref={(el) => { sectionRefs.current["timeline"] = el; }} id="timeline">
                 <EventTimeline />
               </section>
 
+              <SectionDivider symbol="❖" />
+
               {/* Section: Venue */}
               <section ref={(el) => { sectionRefs.current["venue"] = el; }} id="venue">
                 <VenueMap />
               </section>
+
+              <SectionDivider symbol="✦" />
 
               {/* Section: Contact */}
               <section ref={(el) => { sectionRefs.current["contact"] = el; }} id="contact">
@@ -210,19 +242,22 @@ const Index = () => {
               </section>
 
               {/* Footer */}
-              <footer className="text-center py-8 border-t border-gold/20">
-                <img
-                  src={weddingMotif}
-                  alt="శుభం"
-                  width={512}
-                  height={512}
-                  className="w-16 h-16 object-contain mx-auto mb-3 opacity-60"
-                  loading="lazy"
-                />
+              <footer className="text-center py-10 border-t border-gold/20">
+                <div className="relative inline-block">
+                  <div className="absolute inset-0 rounded-full bg-gold/10 blur-xl scale-150" />
+                  <img
+                    src={weddingMotif}
+                    alt="శుభం"
+                    width={512}
+                    height={512}
+                    className="relative w-16 h-16 object-contain mx-auto mb-3 opacity-50"
+                    loading="lazy"
+                  />
+                </div>
                 <p className="text-muted-foreground text-xs font-telugu">
                   శ్రీరస్తు | శుభమస్తు | అవిఘ్నమస్తు
                 </p>
-                <p className="text-muted-foreground/50 text-[10px] mt-2">
+                <p className="text-muted-foreground/40 text-[10px] mt-3">
                   Made with ❤️ for Voleti Family
                 </p>
               </footer>
