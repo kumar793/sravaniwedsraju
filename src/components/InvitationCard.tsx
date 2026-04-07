@@ -38,12 +38,12 @@ const InvitationCard = () => {
           {/* Header */}
           <div className="text-center">
             <motion.p
-              className="text-gold font-semibold text-sm tracking-[0.3em]"
+              className="text-gold font-semibold text-[10px] sm:text-sm tracking-[0.12em] sm:tracking-[0.3em] whitespace-nowrap"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              శ్రీరస్తు &nbsp; | &nbsp; శుభమస్తు &nbsp; | &nbsp; అవిఘ్నమస్తు
+              శ్రీరస్తు &nbsp;|&nbsp; శుభమస్తు &nbsp;|&nbsp; అవిఘ్నమస్తు
             </motion.p>
 
             <Divider />
