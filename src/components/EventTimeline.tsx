@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Clock, Utensils, Heart, Music } from "lucide-react";
+import { Clock, Utensils, Heart } from "lucide-react";
 
 const events = [
   {
@@ -30,33 +30,33 @@ const EventTimeline = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4 }}
     >
-      <h3 className="text-center text-gold font-semibold text-sm tracking-[0.3em] mb-6 uppercase font-telugu">
+      <h3 className="text-center text-gold font-semibold text-sm tracking-[0.3em] mb-8 uppercase font-telugu">
         కార్యక్రమ సమయపట్టిక
       </h3>
       <div className="relative">
         {/* Vertical line */}
-        <div className="absolute left-6 top-0 bottom-0 w-px bg-gold/30" />
+        <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-gold/10 via-gold/40 to-gold/10" />
 
-        <div className="space-y-6">
+        <div className="space-y-5">
           {events.map((event, i) => (
             <motion.div
               key={event.title}
               className="flex gap-4 items-start"
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + i * 0.15 }}
+              transition={{ delay: 0.5 + i * 0.2 }}
             >
-              <div className="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center border-2 border-gold/60 shrink-0">
+              <div className="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center border-2 border-gold/50 shrink-0 shadow-[0_0_15px_rgba(200,160,60,0.2)]">
                 <event.icon className="w-5 h-5 text-gold" />
               </div>
-              <div className="bg-cream/80 rounded-lg p-3 border border-gold/20 flex-1">
-                <p className="text-gold text-[10px] font-semibold tracking-wider">
+              <div className="flex-1 bg-cream/80 rounded-xl p-4 border border-gold/20 shadow-sm hover:shadow-md hover:border-gold/40 transition-all duration-300">
+                <p className="text-gold text-[10px] font-bold tracking-[0.2em] uppercase">
                   {event.time}
                 </p>
-                <p className="text-maroon font-bold text-sm font-telugu">
+                <p className="text-maroon font-bold text-base font-telugu mt-1">
                   {event.title}
                 </p>
-                <p className="text-muted-foreground text-xs font-telugu">
+                <p className="text-muted-foreground text-xs font-telugu mt-0.5">
                   {event.desc}
                 </p>
               </div>

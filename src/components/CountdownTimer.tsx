@@ -37,27 +37,34 @@ const CountdownTimer = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.6 }}
     >
-      <p className="text-center text-gold font-semibold text-xs tracking-[0.3em] mb-4 uppercase">
+      <p className="text-center text-gold font-semibold text-xs tracking-[0.3em] mb-5 uppercase font-telugu">
         వివాహానికి మిగిలిన సమయం
       </p>
-      <div className="grid grid-cols-4 gap-2 sm:gap-4">
-        {units.map((u) => (
-          <div key={u.label} className="text-center">
-            <div className="bg-primary/90 rounded-lg p-2 sm:p-3 ornate-border">
+      <div className="grid grid-cols-4 gap-3 sm:gap-4">
+        {units.map((u, i) => (
+          <motion.div
+            key={u.label}
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 + i * 0.1 }}
+          >
+            <div className="relative bg-primary rounded-xl p-3 sm:p-4 border-2 border-gold/40 shadow-[0_4px_15px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.05)]">
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-gold/5 to-transparent pointer-events-none" />
               <motion.span
                 key={u.value}
-                className="block text-gold font-bold text-2xl sm:text-3xl font-display"
-                initial={{ y: -10, opacity: 0 }}
+                className="relative block text-gold font-bold text-2xl sm:text-4xl font-display"
+                initial={{ y: -8, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
                 {String(u.value).padStart(2, "0")}
               </motion.span>
             </div>
-            <p className="text-muted-foreground text-[10px] sm:text-xs mt-1 font-telugu">
+            <p className="text-muted-foreground text-[10px] sm:text-xs mt-2 font-telugu font-medium">
               {u.label}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </motion.div>
