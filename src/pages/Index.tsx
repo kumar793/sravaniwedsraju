@@ -66,6 +66,18 @@ const Index = () => {
               శ్రీరస్తు &nbsp;|&nbsp; శుభమస్తు &nbsp;|&nbsp; అవిఘ్నమస్తు
             </motion.p>
 
+            {/* Decorative line */}
+            <motion.div
+              className="flex items-center gap-3 w-48 sm:w-64 mb-3"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <div className="flex-1 h-px bg-gold/50" />
+              <span className="text-gold text-xs">✦</span>
+              <div className="flex-1 h-px bg-gold/50" />
+            </motion.div>
+
             {/* Title */}
             <motion.div
               className="text-center mb-2"
@@ -81,6 +93,18 @@ const Index = () => {
               </h1>
             </motion.div>
 
+            {/* Decorative line */}
+            <motion.div
+              className="flex items-center gap-3 w-48 sm:w-64 mb-2"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <div className="flex-1 h-px bg-gold/50" />
+              <span className="text-gold text-xs">❖</span>
+              <div className="flex-1 h-px bg-gold/50" />
+            </motion.div>
+
             {/* Bride & Groom names */}
             <motion.div
               className="text-center my-4"
@@ -90,12 +114,12 @@ const Index = () => {
             >
               <div className="flex items-center justify-center gap-3 sm:gap-6">
                 <p className="text-maroon font-bold text-lg sm:text-2xl font-telugu">దేవి శ్రావణి</p>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full gold-gradient flex items-center justify-center shimmer">
-                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full gold-gradient flex items-center justify-center shimmer shadow-lg">
+                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="hsl(var(--primary))" />
                 </div>
                 <p className="text-maroon font-bold text-lg sm:text-2xl font-telugu">నాగ కామరాజు</p>
               </div>
-              <p className="text-muted-foreground text-sm mt-2 font-telugu">8 ఏప్రిల్ 2026, బుధవారం</p>
+              <p className="text-muted-foreground text-sm mt-3 font-telugu">8 ఏప్రిల్ 2026, బుధవారం</p>
             </motion.div>
 
             {/* Countdown on landing */}
