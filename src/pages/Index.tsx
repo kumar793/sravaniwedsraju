@@ -58,12 +58,12 @@ const Index = () => {
 
             {/* Blessing text */}
             <motion.p
-              className="text-gold text-sm sm:text-base font-telugu font-semibold tracking-[0.2em] mb-2"
+              className="text-gold text-[11px] sm:text-base font-telugu font-semibold tracking-[0.15em] sm:tracking-[0.2em] mb-2 whitespace-nowrap"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              శ్రీరస్తు | శుభమస్తు | అవిఘ్నమస్తు
+              శ్రీరస్తు &nbsp;|&nbsp; శుభమస్తు &nbsp;|&nbsp; అవిఘ్నమస్తు
             </motion.p>
 
             {/* Title */}
